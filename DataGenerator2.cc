@@ -7,9 +7,8 @@ int rdint(int l,int r){return uniform_int_distribution<int>(l,r)(gen);}
 const int N=1e6+5,mod=998244353;
 int a,b;
 void getoutput()
-{//标程的主函数贴在这里，注意变量需要手动赋初值
-  int a,b;scanf("%d%d",&a,&b);
-  printf("%d\n",a+b);
+{//运行标程，需要同一文件夹内存在可执行文件std.exe
+    system("std");
 }
 void Getgenerators(vector<pair<pair<int,int>,function<void()>>>&generators)
 {
@@ -44,6 +43,7 @@ void work(string in,string out,function<void()>getinput)
     cout<<in<<' '<<out<<endl;
     freopen(in.data(),"w",stdout);
     getinput();
+    freopen("CON","w",stdout);
     freopen(in.data(),"r",stdin);
     freopen(out.data(),"w",stdout);
     getoutput();
@@ -69,7 +69,7 @@ void genData()
     for(auto x:generators)
     {
         for(int id=x.first.first;id<=x.first.second;id++)
-            work(tostring(id)+".in",tostring(id)+".out",x.second);
+            work("data/"+tostring(id)+".in","data/"+tostring(id)+".out",x.second);
     }
 }
 int main()
